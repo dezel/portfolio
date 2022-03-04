@@ -51,7 +51,6 @@ def get_transactions(folder):
         df['trans_type'] = df.transaction + ' ' + df.type
         df['trans_date'] = df.trans_date + ' ' + df.trans_time
         df = df.drop(columns=['trans_time', 'transaction', 'type'])
-        print(df)
         df = df.astype(dtype)
 
         all_trans.append(df)
@@ -63,11 +62,11 @@ def get_transactions(folder):
 #save all the transactions into a mongo database
 def insert_transactions(transactions):
     client = MongoClient()
-    ebanking_db = client['ebanking']
-    ezwich_transactions = ebanking_db['ezwich_transactions']
+    transactions_db = client['transactions']
+    all_transactions = transactions_db['all_transactions']
     transactions = transactions.fillna(0)
     transactions_dict = transactions.to_dict("records")
-    ezwich_transactions.insert_many(transactions_dict)
+    all_transactions.insert_many(transactions_dict)
     print('data inserted successfully')
     return 
     
