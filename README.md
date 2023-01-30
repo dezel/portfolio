@@ -4,4 +4,4 @@ it then creates a list and convert it to a pandas dataframe and saves the data i
 it uses uses the following librabries: py_pdf_parser, pandas and re (regular expressions).
 
 
-web_scrape_todisk.py is a sample pseudo code for a client who wanted a webpage scraped and stored in a pdf.
+web_scrape_todisk.py is a sample pseudo code for a client who wanted a webpage(html) scraped and stored in a pdf.
